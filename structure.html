@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>About this documentation · @gitbook-ng/gitbook Documentation</title>
+        <title>Directory structure · @gitbook-ng/gitbook Documentation</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="@gitbook-ng/gitbook 3.3.4">
@@ -55,8 +55,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="setup.html" />
+    <link rel="next" href="pages.html" />
     
+    
+    <link rel="prev" href="setup.html" />
     
 
     </head>
@@ -87,7 +89,7 @@
         
         
     
-        <li class="chapter active" data-level="1.1" data-path="./">
+        <li class="chapter " data-level="1.1" data-path="./">
             
                 <a href="./">
             
@@ -120,7 +122,7 @@
         
         
     
-        <li class="chapter " data-level="2.1" data-path="structure.html">
+        <li class="chapter active" data-level="2.1" data-path="structure.html">
             
                 <a href="structure.html">
             
@@ -603,7 +605,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >About this documentation</a>
+        <a href="." >Directory structure</a>
     </h1>
 </div>
 
@@ -619,24 +621,78 @@
                                 <section class="normal markdown-section">
                                 
 
-                                <h1 id="gitbook-toolchain-documentation">GitBook Toolchain Documentation</h1>
-<p>This document aims to be a comprehensive guide to the @gitbook-ng/gitbook command line tool, version <strong>3.3.4</strong>.</p>
-<h2 id="what-is-gitbook">What is <code>gitbook</code></h2>
-<p><code>gitbook</code> is a command line tool (and Node.js library) for building beautiful books using GitHub/Git and Markdown (or AsciiDoc). This documentation has been generated using `gitbook.</p>
-<p><code>gitbook</code> can output your content as a website (<a href="themes/">customizable</a> and <a href="plugins/">extensibles</a>) or as an ebook (PDF, ePub or Mobi).</p>
-<h2 id="help-and-support">Help and Support</h2>
-<p>If you have problems with the toolchain, you can search for or open a discussion on <a href="https://github.com/gitbook-ng/gitbook/issues" target="_blank">GitHub</a>.</p>
-<h2 id="faq">FAQ</h2>
-<p>Some questions are frequently asked. If you have a problem you should  <a href="faq.html">check this out</a> first.</p>
-<h2 id="contribute-to-this-documentation">Contribute to this documentation</h2>
-<p>You can contribute to improve this documentation on <a href="https://github.com/gitbook-ng/gitbook" target="_blank">GitHub</a> by signaling issues or proposing changes.</p>
+                                <h1 id="directory-structure">Directory Structure</h1>
+<p>GitBook uses a simple directory structure. All Markdown/Asciidoc files listed in the <a href="pages.html">SUMMARY</a> will be transformed as HTML. Multi-Lingual books have a slightly <a href="languages.html">different structure</a>.</p>
+<p>A basic GitBook usually looks something like this:</p>
+<pre><code>.
+&#x251C;&#x2500;&#x2500; book.json
+&#x251C;&#x2500;&#x2500; README.md
+&#x251C;&#x2500;&#x2500; SUMMARY.md
+&#x251C;&#x2500;&#x2500; chapter-1/
+|   &#x251C;&#x2500;&#x2500; README.md
+|   &#x2514;&#x2500;&#x2500; something.md
+&#x2514;&#x2500;&#x2500; chapter-2/
+    &#x251C;&#x2500;&#x2500; README.md
+    &#x2514;&#x2500;&#x2500; something.md
+</code></pre><p>An overview of what each of these does:</p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>book.json</code></td>
+<td>Stores <a href="config.html">configuration</a> data (<strong>optional</strong>)</td>
+</tr>
+<tr>
+<td><code>README.md</code></td>
+<td>Preface / Introduction for your book (<strong>required</strong>)</td>
+</tr>
+<tr>
+<td><code>SUMMARY.md</code></td>
+<td>Table of Contents (See <a href="pages.html">Pages</a>) (<strong>optional</strong>)</td>
+</tr>
+<tr>
+<td><code>GLOSSARY.md</code></td>
+<td>Lexicon / List of terms to annotate (See <a href="lexicon.html">Glossary</a>) (<strong>optional</strong>)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="static-files-and-images">Static files and Images</h3>
+<p>A static file is a file that is not listed in the <code>SUMMARY.md</code>. All static files, unless <a href="#ignore">ignored</a>, are copied to the output.</p>
+<h3 id="ignore">Ignoring files &amp; folders </h3>
+<p>GitBook will read the <code>.gitignore</code>, <code>.bookignore</code> and <code>.ignore</code> files to get a list of files and folders to skip.
+The format inside those files, follows the same convention as <code>.gitignore</code>:</p>
+<pre><code># This is a comment
 
+# Ignore the file test.md
+test.md
+
+# Ignore everything in the directory &quot;bin&quot;
+bin/*
+</code></pre><h3 id="subdirectory">Project integration with subdirectory </h3>
+<p>For software projects, you can use a subdirectory (like <code>docs/</code>) to store the book for the project&apos;s documentation. You can configure the <a href="config.html"><code>root</code> option</a> to indicate the folder where GitBook can find the book&apos;s files:</p>
+<pre><code>.
+&#x251C;&#x2500;&#x2500; book.json
+&#x2514;&#x2500;&#x2500; docs/
+    &#x251C;&#x2500;&#x2500; README.md
+    &#x2514;&#x2500;&#x2500; SUMMARY.md
+</code></pre><p>With <code>book.json</code> containing:</p>
+<pre><code>{
+    &quot;root&quot;: &quot;./docs&quot;
+}
+</code></pre>
                                 
 <hr>
 <div class="btn-group btn-group-justified">
     
+    <a class="btn" href="setup.html"><b>Previous:</b> Installation and Setup</a>
     
-    <a class="btn" href="setup.html"><b>Next:</b> Installation and Setup</a>
+    
+    <a class="btn" href="pages.html"><b>Next:</b> Pages and Summary</a>
     
 </div>
 
@@ -665,8 +721,12 @@
 
             
                 
+                <a href="setup.html" class="navigation navigation-prev " aria-label="Previous page: Installation and Setup">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="setup.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Installation and Setup">
+                
+                <a href="pages.html" class="navigation navigation-next " aria-label="Next page: Pages and Summary">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -677,7 +737,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"About this documentation","level":"1.1","depth":1,"next":{"title":"Installation and Setup","level":"1.2","depth":1,"path":"setup.md","ref":"setup.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","-fontsettings","sitemap","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"sitemap":{"hostname":"https://gitbook-ng.github.com","pathPrefix":"/docs/"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"3.3.4"},"title":"@gitbook-ng/gitbook Documentation","gitbook":"3.3.4"},"file":{"path":"README.md","mtime":"2020-02-10T20:59:03.845Z","type":"markdown"},"gitbook":{"version":"3.3.4","time":"2020-02-11T14:48:08.155Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Directory structure","level":"2.1","depth":1,"next":{"title":"Pages and Summary","level":"2.2","depth":1,"path":"pages.md","ref":"pages.md","articles":[]},"previous":{"title":"Installation and Setup","level":"1.2","depth":1,"path":"setup.md","ref":"setup.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","-fontsettings","sitemap","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"sitemap":{"hostname":"https://gitbook-ng.github.com","pathPrefix":"/docs/"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"3.3.4"},"title":"@gitbook-ng/gitbook Documentation","gitbook":"3.3.4"},"file":{"path":"structure.md","mtime":"2020-02-08T16:26:56.150Z","type":"markdown"},"gitbook":{"version":"3.3.4","time":"2020-02-11T14:48:08.155Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

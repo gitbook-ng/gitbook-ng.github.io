@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>About this documentation · @gitbook-ng/gitbook Documentation</title>
+        <title>Multi-Lingual · @gitbook-ng/gitbook Documentation</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="@gitbook-ng/gitbook 3.3.4">
@@ -55,8 +55,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="setup.html" />
+    <link rel="next" href="syntax/markdown.html" />
     
+    
+    <link rel="prev" href="lexicon.html" />
     
 
     </head>
@@ -87,7 +89,7 @@
         
         
     
-        <li class="chapter active" data-level="1.1" data-path="./">
+        <li class="chapter " data-level="1.1" data-path="./">
             
                 <a href="./">
             
@@ -172,7 +174,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.5" data-path="languages.html">
+        <li class="chapter active" data-level="2.5" data-path="languages.html">
             
                 <a href="languages.html">
             
@@ -603,7 +605,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >About this documentation</a>
+        <a href="." >Multi-Lingual</a>
     </h1>
 </div>
 
@@ -619,24 +621,26 @@
                                 <section class="normal markdown-section">
                                 
 
-                                <h1 id="gitbook-toolchain-documentation">GitBook Toolchain Documentation</h1>
-<p>This document aims to be a comprehensive guide to the @gitbook-ng/gitbook command line tool, version <strong>3.3.4</strong>.</p>
-<h2 id="what-is-gitbook">What is <code>gitbook</code></h2>
-<p><code>gitbook</code> is a command line tool (and Node.js library) for building beautiful books using GitHub/Git and Markdown (or AsciiDoc). This documentation has been generated using `gitbook.</p>
-<p><code>gitbook</code> can output your content as a website (<a href="themes/">customizable</a> and <a href="plugins/">extensibles</a>) or as an ebook (PDF, ePub or Mobi).</p>
-<h2 id="help-and-support">Help and Support</h2>
-<p>If you have problems with the toolchain, you can search for or open a discussion on <a href="https://github.com/gitbook-ng/gitbook/issues" target="_blank">GitHub</a>.</p>
-<h2 id="faq">FAQ</h2>
-<p>Some questions are frequently asked. If you have a problem you should  <a href="faq.html">check this out</a> first.</p>
-<h2 id="contribute-to-this-documentation">Contribute to this documentation</h2>
-<p>You can contribute to improve this documentation on <a href="https://github.com/gitbook-ng/gitbook" target="_blank">GitHub</a> by signaling issues or proposing changes.</p>
+                                <h1 id="multi-languages">Multi-Languages</h1>
+<p>GitBook supports building books written in multiple languages. Each language should be a sub-directory following the normal GitBook format, and a file named <code>LANGS.md</code> should be present at the root of the repository with the following format:</p>
+<pre><code class="lang-markdown"><span class="hljs-section"># Languages</span>
+
+<span class="hljs-bullet">* </span>[<span class="hljs-string">English</span>](<span class="hljs-link">en/</span>)
+<span class="hljs-bullet">* </span>[<span class="hljs-string">French</span>](<span class="hljs-link">fr/</span>)
+<span class="hljs-bullet">* </span>[<span class="hljs-string">Espa&#xF1;ol</span>](<span class="hljs-link">es/</span>)
+</code></pre>
+<h3 id="configuration-for-each-language">Configuration for each language</h3>
+<p>When a language book (ex: <code>en</code>) has a <code>book.json</code>, its configuration will extend the main configuration.</p>
+<p>The only exception is plugins, plugins are specified globally, and language specific plugins cannot be specified.</p>
 
                                 
 <hr>
 <div class="btn-group btn-group-justified">
     
+    <a class="btn" href="lexicon.html"><b>Previous:</b> Glossary</a>
     
-    <a class="btn" href="setup.html"><b>Next:</b> Installation and Setup</a>
+    
+    <a class="btn" href="syntax/markdown.html"><b>Next:</b> Markdown</a>
     
 </div>
 
@@ -665,8 +669,12 @@
 
             
                 
+                <a href="lexicon.html" class="navigation navigation-prev " aria-label="Previous page: Glossary">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="setup.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Installation and Setup">
+                
+                <a href="syntax/markdown.html" class="navigation navigation-next " aria-label="Next page: Markdown">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -677,7 +685,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"About this documentation","level":"1.1","depth":1,"next":{"title":"Installation and Setup","level":"1.2","depth":1,"path":"setup.md","ref":"setup.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","-fontsettings","sitemap","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"sitemap":{"hostname":"https://gitbook-ng.github.com","pathPrefix":"/docs/"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"3.3.4"},"title":"@gitbook-ng/gitbook Documentation","gitbook":"3.3.4"},"file":{"path":"README.md","mtime":"2020-02-10T20:59:03.845Z","type":"markdown"},"gitbook":{"version":"3.3.4","time":"2020-02-11T14:48:08.155Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Multi-Lingual","level":"2.5","depth":1,"next":{"title":"Markdown","level":"2.6","depth":1,"path":"syntax/markdown.md","ref":"syntax/markdown.md","articles":[{"title":"Headings","level":"2.6.1","depth":2,"anchor":"#headings","path":"syntax/markdown.md","ref":"syntax/markdown.md#headings","articles":[]},{"title":"Paragraphs","level":"2.6.2","depth":2,"anchor":"#paragraphs","path":"syntax/markdown.md","ref":"syntax/markdown.md#paragraphs","articles":[]},{"title":"Lists","level":"2.6.3","depth":2,"anchor":"#lists","path":"syntax/markdown.md","ref":"syntax/markdown.md#lists","articles":[]},{"title":"Links","level":"2.6.4","depth":2,"anchor":"#links","path":"syntax/markdown.md","ref":"syntax/markdown.md#links","articles":[]},{"title":"Images","level":"2.6.5","depth":2,"anchor":"#images","path":"syntax/markdown.md","ref":"syntax/markdown.md#images","articles":[]},{"title":"Blockquotes","level":"2.6.6","depth":2,"anchor":"#blockquotes","path":"syntax/markdown.md","ref":"syntax/markdown.md#blockquotes","articles":[]},{"title":"Tables","level":"2.6.7","depth":2,"anchor":"#tables","path":"syntax/markdown.md","ref":"syntax/markdown.md#tables","articles":[]},{"title":"Code","level":"2.6.8","depth":2,"anchor":"#code","path":"syntax/markdown.md","ref":"syntax/markdown.md#code","articles":[]},{"title":"HTML","level":"2.6.9","depth":2,"anchor":"#html","path":"syntax/markdown.md","ref":"syntax/markdown.md#html","articles":[]},{"title":"Footnotes","level":"2.6.10","depth":2,"anchor":"#footnotes","path":"syntax/markdown.md","ref":"syntax/markdown.md#footnotes","articles":[]}]},"previous":{"title":"Glossary","level":"2.4","depth":1,"path":"lexicon.md","ref":"lexicon.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","-fontsettings","sitemap","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"sitemap":{"hostname":"https://gitbook-ng.github.com","pathPrefix":"/docs/"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"3.3.4"},"title":"@gitbook-ng/gitbook Documentation","gitbook":"3.3.4"},"file":{"path":"languages.md","mtime":"2020-02-08T16:26:56.148Z","type":"markdown"},"gitbook":{"version":"3.3.4","time":"2020-02-11T14:48:08.155Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
