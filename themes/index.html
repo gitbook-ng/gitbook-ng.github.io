@@ -621,44 +621,64 @@
                                 <section class="normal markdown-section">
                                 
 
-                                <h1 id="theme">Theme</h1>
-<p>Since version 3.0.0, GitBook can be easily themed. Books use the <a href="https://github.com/gitbook-ng/theme-default" target="_blank">theme-default</a> theme by default.</p>
-<blockquote>
+                                <h1 id="custom-theme">Custom Theme</h1>
+<p>@gitbook-ng/gitbook can be easily themed. Books use the <a href="https://github.com/gitbook-ng/theme-default" target="_blank">theme-default</a> theme by default.</p>
 <p><strong>Caution</strong>: Custom theme can block some plugins from working correctly.</p>
-</blockquote>
 <h2 id="structure-of-a-theme">Structure of a theme</h2>
 <p>A theme is a plugin containing templates and assets. Overriding any individual template is optional, since themes always extend the default theme.</p>
 <table>
 <thead>
 <tr>
-<th>Folder</th>
+<th>Folder / File</th>
 <th>Description</th>
+<th>Source</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>_layouts</code></td>
 <td>Main folder containing all the templates</td>
+<td></td>
 </tr>
 <tr>
 <td><code>_layouts/website/page.html</code></td>
-<td>Template for a normal page</td>
+<td>Template for a normal page.</td>
+<td><a href="https://github.com/gitbook-ng/theme-default/blob/master/_layouts/website/page.html" target="_blank">source</a></td>
 </tr>
 <tr>
 <td><code>_layouts/ebook/page.html</code></td>
 <td>Template for a normal page during ebook generation (PDF&lt; ePub, Mobi)</td>
+<td><a href="https://github.com/gitbook-ng/theme-default/blob/master/_layouts/ebook/page.html" target="_blank">source</a></td>
 </tr>
 </tbody>
 </table>
 <h2 id="extendcustomize-theme-in-a-book">Extend/Customize theme in a book</h2>
 <p>Authors can extend the templates of a theme directly from their book&apos;s source (without creating an external theme). Templates will be resolved in the <code>_layouts</code> folder of the book first, then in the installed plugins/themes.</p>
+<pre><code class="lang-text">.
+&#x251C;&#x2500;&#x2500; SUMMARY.md
+&#x251C;&#x2500;&#x2500; _layouts
+&#x2502;   &#x2514;&#x2500;&#x2500; website
+&#x2502;       &#x2514;&#x2500;&#x2500; page.html
+&#x251C;&#x2500;&#x2500; book.json
+...
+</code></pre>
 <h2 id="extend-instead-of-forking">Extend instead of Forking</h2>
 <p>When you want to make your theme changes available to multiple books, instead of forking the default theme, you can extend it using the <a href="../templating/">templating syntax</a>:</p>
 <pre><code class="lang-html">{% extends template.self %}
 
-{% block body %}
+{% block head %}
     {{ super() }}
-    ... This will be added to the &quot;body&quot; block
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="actionscript">
+      <span class="hljs-comment">// Your script here...</span>
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+{% endblock %}
+
+{% block body %}
+    ... This will be added to the beginning of &quot;body&quot; block
+
+    {{ super() }}
+
+    ... This will be added to the end of &quot;body&quot; block
 {% endblock %}
 </code></pre>
 <p>Take a look at the <a href="https://github.com/gitbook-ng/theme-api" target="_blank">API</a> theme for a more complete example.</p>
@@ -717,7 +737,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Theming","level":"3.3","depth":1,"next":{"title":"FAQ","level":"4.1","depth":1,"path":"faq.md","ref":"faq.md","articles":[]},"previous":{"title":"Test your plugin","level":"3.2.6","depth":2,"path":"plugins/testing.md","ref":"plugins/testing.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","-fontsettings","sitemap"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"sitemap":{"hostname":"https://gitbook-ng.github.com"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"3.3.5"},"title":"@gitbook-ng/gitbook","gitbook":"3.3.4"},"file":{"path":"themes/README.md","mtime":"2020-02-12T00:23:15.383Z","type":"markdown"},"gitbook":{"version":"3.3.5","time":"2020-02-12T00:24:08.172Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Theming","level":"3.3","depth":1,"next":{"title":"FAQ","level":"4.1","depth":1,"path":"faq.md","ref":"faq.md","articles":[]},"previous":{"title":"Test your plugin","level":"3.2.6","depth":2,"path":"plugins/testing.md","ref":"plugins/testing.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","-fontsettings","sitemap"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"sitemap":{"hostname":"https://gitbook-ng.github.com"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"3.3.5"},"title":"@gitbook-ng/gitbook","gitbook":"3.3.4"},"file":{"path":"themes/README.md","mtime":"2020-02-24T22:22:11.775Z","type":"markdown"},"gitbook":{"version":"3.3.5","time":"2020-02-24T22:23:05.875Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
